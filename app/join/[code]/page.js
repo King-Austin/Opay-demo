@@ -107,7 +107,7 @@ export default function JoinCircle({ params }) {
 
                   {/* Important: show the ledger before they join */}
                   <div style={{ background: "#0E0E0C", borderRadius: "var(--radius-md)", padding: "1rem", marginBottom: "1rem" }}>
-                    <p style={{ fontFamily: "var(--font-mono)", fontSize: "9px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#5A5A52", marginBottom: "0.75rem" }}>
+                    <p style={{ fontFamily: "var(--font-mono)", fontSize: "9px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#8E8E80", marginBottom: "0.75rem" }}>
                       {t("Last week's contributions — visible to you before joining", "Last week record — you fit see am before you join", pidgin)}
                     </p>
                     {circle.ledgerPreview.map((e, i) => (

@@ -105,20 +105,20 @@ export default function LoanApply() {
             {fmt(amount)} sent.<br />
             <em>Welcome to credit.</em>
           </h1>
-          <p style={{ fontFamily: "var(--font-mono)", fontSize: "12px", color: "#5A5A52", marginBottom: "0.25rem", animation: "fadeUp 0.5s ease 0.3s forwards", opacity: 0 }}>
+          <p style={{ fontFamily: "var(--font-mono)", fontSize: "12px", color: "#8E8E80", marginBottom: "0.25rem", animation: "fadeUp 0.5s ease 0.3s forwards", opacity: 0 }}>
             Sent to OPay wallet ****5678
           </p>
-          <p style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "#3A3A34", letterSpacing: "0.05em", marginBottom: "2rem", animation: "fadeUp 0.5s ease 0.3s forwards", opacity: 0 }}>
+          <p style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "#6E6E62", letterSpacing: "0.05em", marginBottom: "2rem", animation: "fadeUp 0.5s ease 0.3s forwards", opacity: 0 }}>
             Ref: {ref}
           </p>
           <div className="rp-card-tinted" style={{ textAlign: "left", margin: "0 0 2rem", background: "rgba(31,74,53,0.12)", animation: "fadeUp 0.5s ease 0.4s forwards", opacity: 0 }}>
             <p style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "#D4A853", marginBottom: "0.25rem", letterSpacing: "0.06em" }}>
               Repayment schedule
             </p>
-            <p style={{ fontFamily: "var(--font-mono)", fontSize: "13px", color: "#9A9A8E" }}>
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: "13px", color: "#B4B4A6" }}>
               {fmt(repayment)}/week × {TERM_WEEKS} weeks · Auto-deducted from ajo contributions
             </p>
-            <p style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "#5A5A52", marginTop: "0.25rem" }}>
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "#8E8E80", marginTop: "0.25rem" }}>
               Total repayment: {fmt(total)} (incl. 2.5% flat fee)
             </p>
           </div>
@@ -185,7 +185,7 @@ export default function LoanApply() {
             </div>
 
             {/* Repayment summary */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginTop: "1.5rem", paddingTop: "1.5rem", borderTop: "0.5px solid var(--border-default)" }}>
+            <div className="grid-2" style={{ marginTop: "1.5rem", paddingTop: "1.5rem", borderTop: "0.5px solid var(--border-default)" }}>
               {[
                 { label: "Weekly repayment", val: fmt(repayment) },
                 { label: "Term", val: `${TERM_WEEKS} weeks` },
@@ -193,8 +193,8 @@ export default function LoanApply() {
                 { label: "Total repayment", val: fmt(total) },
               ].map(s => (
                 <div key={s.label}>
-                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "9px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-ghost)", marginBottom: "0.2rem" }}>{s.label}</p>
-                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "15px", fontWeight: 500, color: "var(--text-primary)" }}>{s.val}</p>
+                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: "0.2rem" }}>{s.label}</p>
+                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "16px", fontWeight: 500, color: "var(--text-primary)" }}>{s.val}</p>
                 </div>
               ))}
             </div>

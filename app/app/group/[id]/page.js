@@ -86,10 +86,10 @@ function OPayToast({ visible, amount, ref, wallet, time }) {
           <p style={{ fontFamily: "var(--font-mono)", fontSize: "11px", fontWeight: 500, color: "#ECEAE4", marginBottom: "0.3rem", letterSpacing: "0.03em" }}>
             OPay Debit Alert
           </p>
-          <p style={{ fontFamily: "var(--font-mono)", fontSize: "12px", color: "#9A9A8E", lineHeight: 1.6 }}>
+          <p style={{ fontFamily: "var(--font-mono)", fontSize: "12px", color: "#B4B4A6", lineHeight: 1.6 }}>
             <span style={{ color: "#D4A853" }}>{fmt(amount)}</span> debited from wallet {wallet}<br />
             Awka Market Women Circle · Week 7<br />
-            <span style={{ color: "#5A5A52" }}>Ref: {ref} · {time}</span>
+            <span style={{ color: "#8E8E80" }}>Ref: {ref} · {time}</span>
           </p>
         </div>
       </div>
@@ -151,13 +151,13 @@ export default function GroupDetail({ params }) {
       {showExitModal && <ExitModal group={group} onClose={() => setShowExitModal(false)} />}
 
       {/* Header */}
-      <div style={{ padding: "2.5rem 2.5rem 0" }}>
+      <div className="app-pad" style={{ paddingTop: "2.5rem" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem" }}>
-          <Link href="/app/dashboard" style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-muted)", letterSpacing: "0.06em" }}>
+          <Link href="/app/dashboard" style={{ fontFamily: "var(--font-mono)", fontSize: "12px", color: "var(--text-secondary)", letterSpacing: "0.06em" }}>
             ← Dashboard
           </Link>
           <span style={{ color: "var(--border-strong)" }}>/</span>
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-ghost)" }}>{group.name}</span>
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: "12px", color: "var(--text-muted)" }}>{group.name}</span>
         </div>
         <span className="rp-eyebrow">{group.isOrganiser ? "07 — Circle (Organiser View)" : "07 — Circle Detail"}</span>
 
@@ -166,10 +166,10 @@ export default function GroupDetail({ params }) {
           <OrgInactiveAlert onDismiss={() => setShowOrgAlert(false)} />
         )}
 
-        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem", marginBottom: "2rem" }}>
+        <div className="stack-mobile" style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem", marginBottom: "2rem" }}>
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.5rem" }}>
-              <h1 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(24px, 3.5vw, 40px)", fontWeight: 600, lineHeight: 1, letterSpacing: "-0.02em", color: "var(--text-primary)" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.5rem", flexWrap: "wrap" }}>
+              <h1 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(26px, 4vw, 40px)", fontWeight: 600, lineHeight: 1, letterSpacing: "-0.02em", color: "var(--text-primary)" }}>
                 {group.name}
               </h1>
               <RecDot label="Live" />
@@ -181,12 +181,12 @@ export default function GroupDetail({ params }) {
           <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "0.5rem" }}>
             {/* Low balance warning */}
             {!contributed && <LowBalanceWarning />}
-            <div style={{ display: "flex", gap: "0.75rem" }}>
+            <div className="full-mobile" style={{ display: "flex", gap: "0.75rem" }}>
               <button className="rp-btn-ghost" style={{ fontSize: "11px" }} onClick={() => setShowExitModal(true)}>
                 Leave circle
               </button>
               <button
-                className="rp-btn-cta"
+                className="rp-btn-cta full-mobile"
                 onClick={handleContribute}
                 disabled={contributed}
                 style={{ opacity: contributed ? 0.6 : 1, fontSize: "13px" }}
@@ -199,7 +199,7 @@ export default function GroupDetail({ params }) {
       </div>
 
       {/* Main grid */}
-      <div style={{ padding: "0 2.5rem", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem", marginBottom: "1.5rem" }}>
+      <div className="app-pad grid-2" style={{ gap: "1.5rem", marginBottom: "1.5rem" }}>
         {/* Rotation schedule */}
         <div className="rp-card-raised">
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.25rem" }}>
@@ -290,17 +290,19 @@ export default function GroupDetail({ params }) {
       </div>
 
       {/* Ledger (dark panel) */}
-      <div style={{ background: "#0E0E0C", padding: "2.5rem", margin: "0 0 2rem 0" }}>
+      <div className="app-pad" style={{ background: "#0E0E0C", paddingTop: "2.5rem", paddingBottom: "2.5rem", margin: "0 0 2rem 0" }}>
         <span className="rp-eyebrow-dark">08 — Transparent Ledger</span>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "1.5rem", flexWrap: "wrap", gap: "1rem" }}>
           <h3 className="rp-sub-heading-dark" style={{ margin: 0 }}>
             Every naira. <em>Every member. Visible to all.</em>
           </h3>
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "#3A3A34", letterSpacing: "0.06em" }}>
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--dark-text-muted)", letterSpacing: "0.06em" }}>
             {ledgerEntries.length} entries · auditable by all members
           </span>
         </div>
-        <LedgerTable entries={ledgerEntries} />
+        <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
+          <LedgerTable entries={ledgerEntries} />
+        </div>
       </div>
     </main>
   );

@@ -75,12 +75,12 @@ function ScreenRecognition({ pidgin, toggle, onNext }) {
   return (
     <div style={{ minHeight: "100vh", background: "#0E0E0C", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "2rem", textAlign: "center" }}>
       {/* Lang toggle */}
-      <button onClick={toggle} style={{ position: "absolute", top: "1.5rem", right: "2rem", fontFamily: "var(--font-mono)", fontSize: "10px", letterSpacing: "0.1em", padding: "0.3rem 0.6rem", border: "0.5px solid rgba(255,255,255,0.15)", borderRadius: "var(--radius-sm)", background: "transparent", color: "#5A5A52", cursor: "pointer" }}>
+      <button onClick={toggle} style={{ position: "absolute", top: "1.5rem", right: "2rem", fontFamily: "var(--font-mono)", fontSize: "10px", letterSpacing: "0.1em", padding: "0.3rem 0.6rem", border: "0.5px solid rgba(255,255,255,0.15)", borderRadius: "var(--radius-sm)", background: "transparent", color: "#8E8E80", cursor: "pointer" }}>
         {pidgin ? "EN" : "PID"}
       </button>
 
       <div style={{ maxWidth: "560px", opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(20px)", transition: "all 0.7s cubic-bezier(0.22,1,0.36,1)" }}>
-        <p style={{ fontFamily: "var(--font-mono)", fontSize: "10px", letterSpacing: "0.15em", textTransform: "uppercase", color: "#3A3A34", marginBottom: "2rem" }}>
+        <p style={{ fontFamily: "var(--font-mono)", fontSize: "10px", letterSpacing: "0.15em", textTransform: "uppercase", color: "#6E6E62", marginBottom: "2rem" }}>
           ◈ AjoStack
         </p>
         <h1 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(40px, 7vw, 72px)", fontWeight: 600, lineHeight: 0.95, letterSpacing: "-0.02em", color: "#ECEAE4", marginBottom: "1.5rem" }}>
@@ -90,7 +90,7 @@ function ScreenRecognition({ pidgin, toggle, onNext }) {
             pidgin
           )}
         </h1>
-        <p style={{ fontFamily: "var(--font-serif)", fontSize: "17px", lineHeight: 1.7, color: "#9A9A8E", marginBottom: "3rem", maxWidth: "36ch", margin: "0 auto 3rem" }}>
+        <p style={{ fontFamily: "var(--font-serif)", fontSize: "17px", lineHeight: 1.7, color: "#B4B4A6", marginBottom: "3rem", maxWidth: "36ch", margin: "0 auto 3rem" }}>
           {t(
             "AjoStack doesn't teach you something new. It runs the circle you already trust on OPay — with a Gemini AI credit score on top.",
             "AjoStack no dey teach you new thing. E just run the ajo wey you know on OPay — plus AI credit score for top.",
@@ -134,13 +134,13 @@ function ScreenLedger({ pidgin, onNext }) {
         {/* Mini ledger */}
         <div style={{ background: "#1A1A17", borderRadius: "var(--radius-lg)", border: "0.5px solid rgba(255,255,255,0.08)", overflow: "hidden", marginBottom: "1.5rem" }}>
           <div style={{ padding: "0.75rem 1.25rem", borderBottom: "0.5px solid rgba(255,255,255,0.06)", display: "flex", justifyContent: "space-between" }}>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "#5A5A52", letterSpacing: "0.1em" }}>AWKA MARKET WOMEN · WEEK 1</span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "#3A3A34" }}>Apr 4, 2026</span>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "#8E8E80", letterSpacing: "0.1em" }}>AWKA MARKET WOMEN · WEEK 1</span>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "#6E6E62" }}>Apr 4, 2026</span>
           </div>
           {LEDGER_PREVIEW.map((e, i) => (
             <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr auto auto", gap: "1rem", padding: "0.75rem 1.25rem", borderBottom: i < LEDGER_PREVIEW.length - 1 ? "0.5px solid rgba(255,255,255,0.04)" : "none", alignItems: "center" }}>
               <span style={{ fontFamily: "var(--font-serif)", fontSize: "14px", color: "#ECEAE4" }}>{e.member}</span>
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: "12px", color: "#9A9A8E" }}>₦{e.amount.toLocaleString()}</span>
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: "12px", color: "#B4B4A6" }}>₦{e.amount.toLocaleString()}</span>
               <span style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: e.status === "ontime" ? "#1F4A35" : "#D4A853", background: e.status === "ontime" ? "rgba(31,74,53,0.15)" : "rgba(212,168,83,0.12)", padding: "0.15rem 0.4rem", borderRadius: "3px" }}>
                 {e.status === "ontime" ? "✓ On Time" : "⚠ Late"}
               </span>
@@ -263,7 +263,7 @@ function ScreenAction({ pidgin, router }) {
           {t("Got an invite code from your organiser? Enter it below. Or create your own circle.", "Your organiser give you code? Enter am. Or start your own circle.", pidgin)}
         </p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "2rem" }}>
+        <div className="grid-2" style={{ marginBottom: "2rem" }}>
           {/* Join */}
           <div className="rp-card-raised" style={{ textAlign: "left" }}>
             <p style={{ fontFamily: "var(--font-mono)", fontSize: "9px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--text-ghost)", marginBottom: "0.75rem" }}>

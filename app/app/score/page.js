@@ -30,7 +30,7 @@ function BuildingState({ onToggle }) {
             {/* Progress to unlock */}
             <div style={{ maxWidth: "320px", marginBottom: "1.5rem" }}>
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.4rem" }}>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "#9A9A8E" }}>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "#B4B4A6" }}>
                   {contributionsDone} of {contributionsNeeded} contributions
                 </span>
                 <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "#D4A853" }}>
@@ -48,7 +48,7 @@ function BuildingState({ onToggle }) {
               </p>
             </div>
 
-            <button onClick={onToggle} style={{ marginTop: "2rem", background: "none", border: "0.5px solid rgba(255,255,255,0.15)", borderRadius: "var(--radius-md)", padding: "0.5rem 1rem", fontFamily: "var(--font-mono)", fontSize: "10px", color: "#5A5A52", cursor: "pointer", letterSpacing: "0.06em" }}>
+            <button onClick={onToggle} style={{ marginTop: "2rem", background: "none", border: "0.5px solid rgba(255,255,255,0.15)", borderRadius: "var(--radius-md)", padding: "0.5rem 1rem", fontFamily: "var(--font-mono)", fontSize: "10px", color: "#8E8E80", cursor: "pointer", letterSpacing: "0.06em" }}>
               ⤺ Demo: view as established user (Ngozi, 782)
             </button>
           </div>
@@ -58,9 +58,9 @@ function BuildingState({ onToggle }) {
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem" }}>
               <div style={{ width: "200px", height: "200px", borderRadius: "50%", border: "6px solid rgba(255,255,255,0.06)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", position: "relative" }}>
                 <span style={{ fontSize: "28px", marginBottom: "0.5rem", opacity: 0.5 }}>🔒</span>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: "10px", letterSpacing: "0.12em", color: "#5A5A52", textTransform: "uppercase" }}>Locked</span>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: "10px", letterSpacing: "0.12em", color: "#8E8E80", textTransform: "uppercase" }}>Locked</span>
               </div>
-              <p style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "#3A3A34", textAlign: "center", maxWidth: "200px" }}>
+              <p style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "#6E6E62", textAlign: "center", maxWidth: "200px" }}>
                 Unlocks after {contributionsNeeded} contributions
               </p>
             </div>
@@ -99,7 +99,7 @@ export default function AjoScorePage() {
               <Link href="/app/loan" className="rp-btn-cta">
                 Apply for Micro-Loan ↗
               </Link>
-              <button onClick={() => setViewMode("building")} style={{ background: "none", border: "0.5px solid rgba(255,255,255,0.15)", borderRadius: "var(--radius-md)", padding: "0.5rem 1rem", fontFamily: "var(--font-mono)", fontSize: "10px", color: "#5A5A52", cursor: "pointer", letterSpacing: "0.06em" }}>
+              <button onClick={() => setViewMode("building")} style={{ background: "none", border: "0.5px solid rgba(255,255,255,0.15)", borderRadius: "var(--radius-md)", padding: "0.5rem 1rem", fontFamily: "var(--font-mono)", fontSize: "10px", color: "#8E8E80", cursor: "pointer", letterSpacing: "0.06em" }}>
                 Demo: new-user "Building" state →
               </button>
             </div>
@@ -113,7 +113,7 @@ export default function AjoScorePage() {
               ].map(s => (
                 <div key={s.label}>
                   <p style={{ fontFamily: "var(--font-mono)", fontSize: "18px", fontWeight: 500, color: "#D4A853", lineHeight: 1 }}>{s.val}</p>
-                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "#5A5A52", letterSpacing: "0.06em", marginTop: "0.25rem" }}>{s.label}</p>
+                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "#8E8E80", letterSpacing: "0.06em", marginTop: "0.25rem" }}>{s.label}</p>
                 </div>
               ))}
             </div>

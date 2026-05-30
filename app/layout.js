@@ -7,6 +7,13 @@ export const metadata = {
   description: "AI-powered digital thrift & micro-credit for Nigeria's 14.6 million ajo/esusu users. Built on OPay rails.",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#ECEAE4",
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

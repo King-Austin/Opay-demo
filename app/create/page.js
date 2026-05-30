@@ -82,14 +82,14 @@ export default function CreateCircle() {
             <em>{name || "Your Circle"}</em><br />{t("is live.", "don ready.", pidgin)}
           </h2>
           <div style={{ background: "rgba(255,255,255,0.05)", borderRadius: "var(--radius-md)", padding: "1rem", marginBottom: "1.5rem" }}>
-            <p style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "#5A5A52", letterSpacing: "0.1em", marginBottom: "0.3rem" }}>
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "#8E8E80", letterSpacing: "0.1em", marginBottom: "0.3rem" }}>
               {t("Share this code with your members", "Give your members this code", pidgin)}
             </p>
             <p style={{ fontFamily: "var(--font-mono)", fontSize: "24px", fontWeight: 500, color: "#D4A853", letterSpacing: "0.2em" }}>
               {circleCode}
             </p>
           </div>
-          <p style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "#3A3A34" }}>
+          <p style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "#6E6E62" }}>
             {t("Invites sent by SMS to all members. Taking you to dashboard...", "SMS don go to all members. E dey take you to dashboard...", pidgin)}
           </p>
         </div>

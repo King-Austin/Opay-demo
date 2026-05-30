@@ -84,15 +84,15 @@ export default function Landing() {
                 See the problem
               </a>
             </div>
-            <div style={{ display: "flex", gap: "1.5rem", paddingTop: "0.5rem" }} className="fade-up">
+            <div style={{ display: "flex", gap: "1.5rem", paddingTop: "0.5rem", flexWrap: "wrap" }} className="fade-up">
               {[
                 { val: "14.6M", label: "ajo participants" },
                 { val: "₦0", label: "credit trail today" },
                 { val: "100%", label: "digital, zero cash" },
               ].map(stat => (
                 <div key={stat.label}>
-                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "18px", fontWeight: 500, color: "var(--accent-green)", lineHeight: 1 }}>{stat.val}</p>
-                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "10px", letterSpacing: "0.08em", color: "var(--text-ghost)", textTransform: "uppercase", marginTop: "0.25rem" }}>{stat.label}</p>
+                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "20px", fontWeight: 500, color: "var(--accent-green)", lineHeight: 1 }}>{stat.val}</p>
+                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "10px", letterSpacing: "0.08em", color: "var(--text-muted)", textTransform: "uppercase", marginTop: "0.25rem" }}>{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -117,7 +117,7 @@ export default function Landing() {
               When the organiser disappears, there is no digital trail.
               No evidence. No recourse.
             </p>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginTop: "1.5rem" }}>
+            <div className="grid-2" style={{ marginTop: "1.5rem" }}>
               {[
                 { n: "58%", l: "of GDP is informal" },
                 { n: "70%", l: "of participants are women" },
@@ -126,7 +126,7 @@ export default function Landing() {
               ].map(s => (
                 <div key={s.l} style={{ borderLeft: "2px solid rgba(212,168,83,0.3)", paddingLeft: "0.75rem" }}>
                   <p style={{ fontFamily: "var(--font-mono)", fontSize: "20px", fontWeight: 500, color: "#D4A853", lineHeight: 1 }}>{s.n}</p>
-                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "#5A5A52", letterSpacing: "0.06em", marginTop: "0.2rem" }}>{s.l}</p>
+                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "#8E8E80", letterSpacing: "0.06em", marginTop: "0.2rem" }}>{s.l}</p>
                 </div>
               ))}
             </div>
@@ -160,7 +160,7 @@ export default function Landing() {
             <em>Infrastructure you can trust.</em>
           </h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "2rem" }}>
+        <div className="grid-2" style={{ gap: "2rem" }}>
           {howItWorksSteps.map(step => (
             <div key={step.num} className="rp-card-raised">
               <span style={{ fontFamily: "var(--font-mono)", fontSize: "28px", fontWeight: 500, color: "var(--accent-green)", opacity: 0.3, lineHeight: 1, display: "block", marginBottom: "1rem" }}>

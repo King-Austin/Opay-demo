@@ -9,11 +9,11 @@ export default function Dashboard() {
   return (
     <main style={{ background: "var(--bg-primary)", minHeight: "100vh" }}>
       {/* Header */}
-      <div style={{ padding: "2.5rem 2.5rem 0" }}>
+      <div className="app-pad" style={{ paddingTop: "2.5rem" }}>
         <span className="rp-eyebrow">Dashboard</span>
-        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem", marginBottom: "2rem" }}>
+        <div className="stack-mobile" style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem", marginBottom: "2rem" }}>
           <div>
-            <h1 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 600, lineHeight: 0.95, letterSpacing: "-0.02em", color: "var(--text-primary)", marginBottom: "0.5rem" }}>
+            <h1 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(32px, 5vw, 46px)", fontWeight: 600, lineHeight: 0.95, letterSpacing: "-0.02em", color: "var(--text-primary)", marginBottom: "0.5rem" }}>
               Welcome back,<br />
               <em>Ngozi.</em>
             </h1>
@@ -30,18 +30,18 @@ export default function Dashboard() {
         </div>
 
         {/* Stats row */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "1rem", marginBottom: "2rem" }}>
+        <div className="grid-4" style={{ marginBottom: "2rem" }}>
           {[
             { label: "Active Circles", val: groups.length, mono: true },
             { label: "Total Contributed", val: "₦" + totalSaved.toLocaleString(), mono: true },
             { label: "AjoScore", val: currentUser.ajoScore, mono: true, highlight: true },
             { label: "Max Loan Eligible", val: "₦" + currentUser.maxLoan.toLocaleString(), mono: true },
           ].map(s => (
-            <div key={s.label} className="rp-card-raised" style={{ padding: "1.25rem" }}>
-              <p style={{ fontFamily: "var(--font-mono)", fontSize: "9px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--text-ghost)", marginBottom: "0.5rem" }}>
+            <div key={s.label} className="rp-card-raised stat-pop" style={{ padding: "1.25rem" }}>
+              <p style={{ fontFamily: "var(--font-mono)", fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: "0.5rem" }}>
                 {s.label}
               </p>
-              <p style={{ fontFamily: "var(--font-mono)", fontSize: "22px", fontWeight: 500, color: s.highlight ? "var(--accent-green)" : "var(--text-primary)", lineHeight: 1 }}>
+              <p style={{ fontFamily: "var(--font-mono)", fontSize: "24px", fontWeight: 500, color: s.highlight ? "var(--accent-green)" : "var(--text-primary)", lineHeight: 1 }}>
                 {s.val}
               </p>
             </div>
@@ -50,15 +50,15 @@ export default function Dashboard() {
       </div>
 
       {/* Groups */}
-      <div style={{ padding: "0 2.5rem 4rem" }}>
+      <div className="app-pad" style={{ paddingBottom: "4rem" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.25rem" }}>
           <span className="rp-eyebrow" style={{ marginBottom: 0 }}>Your Ajo Circles</span>
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "var(--text-ghost)" }}>
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-muted)" }}>
             {groups.length} active
           </span>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.25rem" }}>
+        <div className="grid-3">
           {groups.map(g => (
             <GroupCard key={g.id} group={g} />
           ))}
@@ -88,18 +88,18 @@ export default function Dashboard() {
       </div>
 
       {/* AjoScore prompt */}
-      <div style={{ margin: "0 2.5rem 4rem", background: "#0E0E0C", borderRadius: "var(--radius-lg)", padding: "2rem", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
-        <div>
-          <span className="rp-eyebrow-dark" style={{ marginBottom: "0.5rem" }}>06 — Your Credit Identity</span>
-          <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "22px", fontWeight: 500, color: "#ECEAE4", lineHeight: 1.2 }}>
-            AjoScore: <em style={{ color: "#D4A853" }}>782</em> — Excellent standing.
-          </h3>
-          <p style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "#5A5A52", marginTop: "0.5rem", letterSpacing: "0.03em" }}>
-            Eligible for micro-loans up to ₦150,000 via OPay wallet
-          </p>
-        </div>
-        <div style={{ display: "flex", gap: "0.75rem" }}>
-          <Link href="/app/score" className="rp-btn-cta">
+      <div className="app-pad stack-mobile" style={{ marginBottom: "4rem", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1.25rem" }}>
+        <div style={{ background: "#0E0E0C", borderRadius: "var(--radius-lg)", padding: "2rem", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1.25rem", width: "100%" }}>
+          <div>
+            <span className="rp-eyebrow-dark" style={{ marginBottom: "0.5rem" }}>06 — Your Credit Identity</span>
+            <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "24px", fontWeight: 500, color: "#F2F0EA", lineHeight: 1.2 }}>
+              AjoScore: <em style={{ color: "#D4A853" }}>782</em> — Excellent standing.
+            </h3>
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: "12px", color: "var(--dark-text-muted)", marginTop: "0.5rem", letterSpacing: "0.03em" }}>
+              Eligible for micro-loans up to ₦150,000 via OPay wallet
+            </p>
+          </div>
+          <Link href="/app/score" className="rp-btn-cta full-mobile">
             View AjoScore ↗
           </Link>
         </div>
