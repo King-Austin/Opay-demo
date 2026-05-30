@@ -1,11 +1,83 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import ScoreGauge from "@/components/ScoreGauge";
 import ContributionBar from "@/components/ContributionBar";
 import { currentUser, scoreFactors, groups } from "@/data/mock";
 
+/* Building state — shown to brand-new users with < 4 contributions */
+function BuildingState({ onToggle }) {
+  const contributionsDone = 1;
+  const contributionsNeeded = 4;
+  const pct = (contributionsDone / contributionsNeeded) * 100;
+
+  return (
+    <main>
+      <section className="rp-section-dark" style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+        <span className="rp-eyebrow-dark">09 — AjoScore</span>
+        <div className="rp-two-col" style={{ alignItems: "center" }}>
+          <div>
+            <h1 className="rp-big-heading">
+              Your score is<br />
+              <em>building.</em>
+            </h1>
+            <p className="rp-body-dark" style={{ marginBottom: "1.5rem" }}>
+              Complete {contributionsNeeded} contributions to unlock your AjoScore.
+              You're {contributionsDone} in. Every on-time payment from here builds your
+              first formal credit identity.
+            </p>
+
+            {/* Progress to unlock */}
+            <div style={{ maxWidth: "320px", marginBottom: "1.5rem" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.4rem" }}>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "#9A9A8E" }}>
+                  {contributionsDone} of {contributionsNeeded} contributions
+                </span>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "#D4A853" }}>
+                  {contributionsNeeded - contributionsDone} to go
+                </span>
+              </div>
+              <div style={{ height: "3px", background: "rgba(255,255,255,0.08)", borderRadius: "2px", overflow: "hidden" }}>
+                <div style={{ height: "3px", width: `${pct}%`, background: "#D4A853", borderRadius: "2px", transition: "width 0.8s ease" }} />
+              </div>
+            </div>
+
+            <div className="rp-card-tinted" style={{ background: "rgba(212,168,83,0.1)", borderColor: "rgba(212,168,83,0.3)", borderLeftColor: "#D4A853", maxWidth: "380px" }}>
+              <p style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "#D4A853", lineHeight: 1.6 }}>
+                No score yet — that's normal. We never show a "0". Your discipline is being recorded from contribution one.
+              </p>
+            </div>
+
+            <button onClick={onToggle} style={{ marginTop: "2rem", background: "none", border: "0.5px solid rgba(255,255,255,0.15)", borderRadius: "var(--radius-md)", padding: "0.5rem 1rem", fontFamily: "var(--font-mono)", fontSize: "10px", color: "#5A5A52", cursor: "pointer", letterSpacing: "0.06em" }}>
+              ⤺ Demo: view as established user (Ngozi, 782)
+            </button>
+          </div>
+
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            {/* Locked gauge */}
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem" }}>
+              <div style={{ width: "200px", height: "200px", borderRadius: "50%", border: "6px solid rgba(255,255,255,0.06)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", position: "relative" }}>
+                <span style={{ fontSize: "28px", marginBottom: "0.5rem", opacity: 0.5 }}>🔒</span>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: "10px", letterSpacing: "0.12em", color: "#5A5A52", textTransform: "uppercase" }}>Locked</span>
+              </div>
+              <p style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "#3A3A34", textAlign: "center", maxWidth: "200px" }}>
+                Unlocks after {contributionsNeeded} contributions
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
 export default function AjoScorePage() {
+  const [viewMode, setViewMode] = useState("established"); // "established" | "building"
   const scoreColor = currentUser.ajoScore >= 750 ? "Excellent" : currentUser.ajoScore >= 600 ? "Good" : "Fair";
+
+  if (viewMode === "building") {
+    return <BuildingState onToggle={() => setViewMode("established")} />;
+  }
 
   return (
     <main>
@@ -23,10 +95,13 @@ export default function AjoScorePage() {
               and produces a score that represents your financial discipline —
               behaviour you're already doing, now formally visible.
             </p>
-            <div style={{ display: "flex", gap: "1rem" }}>
+            <div style={{ display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
               <Link href="/app/loan" className="rp-btn-cta">
                 Apply for Micro-Loan ↗
               </Link>
+              <button onClick={() => setViewMode("building")} style={{ background: "none", border: "0.5px solid rgba(255,255,255,0.15)", borderRadius: "var(--radius-md)", padding: "0.5rem 1rem", fontFamily: "var(--font-mono)", fontSize: "10px", color: "#5A5A52", cursor: "pointer", letterSpacing: "0.06em" }}>
+                Demo: new-user "Building" state →
+              </button>
             </div>
 
             {/* Score breakdown preview */}

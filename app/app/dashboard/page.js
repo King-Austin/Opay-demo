@@ -23,9 +23,9 @@ export default function Dashboard() {
           </div>
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
             <Link href="/app/loan" className="rp-btn-ghost">Apply for Loan</Link>
-            <button className="rp-btn-cta" style={{ fontSize: "12px", padding: "0.7rem 1.5rem" }}>
+            <Link href="/create" className="rp-btn-cta" style={{ fontSize: "12px", padding: "0.7rem 1.5rem" }}>
               + Create Circle
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -63,10 +63,11 @@ export default function Dashboard() {
             <GroupCard key={g.id} group={g} />
           ))}
           {/* "Create new" placeholder card */}
-          <button style={{
+          <Link href="/create" style={{
             background: "transparent",
             border: "0.5px dashed var(--border-strong)",
             borderRadius: "var(--radius-lg)",
+            textDecoration: "none",
             padding: "1.75rem",
             cursor: "pointer",
             display: "flex",
@@ -82,7 +83,7 @@ export default function Dashboard() {
           >
             <span style={{ fontFamily: "var(--font-mono)", fontSize: "24px", color: "var(--text-ghost)" }}>+</span>
             <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-ghost)", letterSpacing: "0.06em" }}>Start new circle</span>
-          </button>
+          </Link>
         </div>
       </div>
 

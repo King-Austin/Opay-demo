@@ -256,6 +256,12 @@ export default function LoanApply() {
                 }}>
                   ✓ Auto-deduct from weekly ajo contributions
                 </div>
+                {/* Payout-clash offset notice */}
+                <div style={{ marginTop: "0.5rem", padding: "0.6rem 0.75rem", background: "rgba(0,0,0,0.03)", border: "0.5px solid var(--border-default)", borderRadius: "var(--radius-md)" }}>
+                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "var(--text-muted)", lineHeight: 1.6, letterSpacing: "0.02em" }}>
+                    Your payout falls in Week 9 (Awka circle). Repayment will automatically start <strong>Week 10</strong> to avoid clashing with the week you collect.
+                  </p>
+                </div>
               </div>
 
               <button className="rp-btn-cta" style={{ width: "100%", justifyContent: "center" }} onClick={handleApply}>
