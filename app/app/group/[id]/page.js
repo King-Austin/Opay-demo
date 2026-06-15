@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import Link from "next/link";
 import RecDot from "@/components/RecDot";
 import LedgerTable from "@/components/LedgerTable";
@@ -12,8 +12,6 @@ function genRef() {
   const r = () => chars[Math.floor(Math.random() * chars.length)];
   return `OPY-2026-0530-${r()}${r()}${Math.floor(Math.random() * 9 + 1)}`;
 }
-const CONTRIB_REF = genRef();
-const CONTRIB_TIME = new Date().toLocaleTimeString("en-NG", { hour: "2-digit", minute: "2-digit" });
 
 function Countdown({ targetDate }) {
   const [time, setTime] = useState("");
@@ -125,15 +123,20 @@ function ExitModal({ group, onClose }) {
 }
 
 export default function GroupDetail({ params }) {
-  const { id } = params;
+  const { id } = use(params);
   const group = groups.find(g => g.id === id) || groups[0];
   const [toastVisible, setToastVisible] = useState(false);
   const [contributed, setContributed] = useState(false);
   const [showOrgAlert, setShowOrgAlert] = useState(true);
   const [showExitModal, setShowExitModal] = useState(false);
+  // Generated on the client at contribution time — never during SSR/render, so no hydration mismatch.
+  const [contribRef, setContribRef] = useState("");
+  const [contribTime, setContribTime] = useState("");
 
   function handleContribute() {
     if (contributed) return;
+    setContribRef(genRef());
+    setContribTime(new Date().toLocaleTimeString("en-NG", { hour: "2-digit", minute: "2-digit" }));
     setToastVisible(true);
     setContributed(true);
     setTimeout(() => setToastVisible(false), 4000);
@@ -145,7 +148,7 @@ export default function GroupDetail({ params }) {
   return (
     <main style={{ background: "var(--bg-primary)", minHeight: "100vh" }}>
       {/* OPay-style toast */}
-      <OPayToast visible={toastVisible} amount={group.contribution} ref={CONTRIB_REF} wallet="****5678" time={CONTRIB_TIME} />
+      <OPayToast visible={toastVisible} amount={group.contribution} ref={contribRef} wallet="****5678" time={contribTime} />
 
       {/* Exit modal */}
       {showExitModal && <ExitModal group={group} onClose={() => setShowExitModal(false)} />}

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, use } from "react";
 import { useRouter } from "next/navigation";
 import { usePidgin, t } from "@/contexts/PidginContext";
 
@@ -28,8 +28,9 @@ function fmt(n) { return "₦" + n.toLocaleString(); }
 export default function JoinCircle({ params }) {
   const router = useRouter();
   const { pidgin } = usePidgin();
-  const [code, setCode] = useState(params.code !== "enter" ? params.code : "");
-  const [looked, setLooked] = useState(params.code !== "enter");
+  const { code: routeCode } = use(params);
+  const [code, setCode] = useState(routeCode !== "enter" ? routeCode : "");
+  const [looked, setLooked] = useState(routeCode !== "enter");
   const [joining, setJoining] = useState(false);
   const [joined, setJoined] = useState(false);
 

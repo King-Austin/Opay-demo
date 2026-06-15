@@ -21,13 +21,15 @@ export default function LoanApply() {
   const [purpose, setPurpose] = useState(PURPOSES[0]);
   const [stage, setStage] = useState("form"); // form | processing | success
   const [step, setStep] = useState(0);
-  const [ref] = useState(genRef);
+  // Reference generated on the client when the user applies — not during render/SSR.
+  const [ref, setRef] = useState("");
 
   const repayment = Math.ceil((amount + amount * RATE) / TERM_WEEKS);
   const total = amount + Math.ceil(amount * RATE);
   const fee = Math.ceil(amount * RATE);
 
   function handleApply() {
+    setRef(genRef());
     setStage("processing");
     setStep(1);
     setTimeout(() => setStep(2), 1600);

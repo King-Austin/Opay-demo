@@ -5,21 +5,21 @@
   --bg-surface:          #F5F3ED;
   --bg-raised:           #FFFFFF;
   --bg-sunken:           #E4E2DC;
-  --text-primary:        #16160F;  /* darker for max legibility */
-  --text-secondary:      #3D3D34;  /* darkened from #4A4A42 */
-  --text-muted:          #62625A;  /* darkened from #7A7A70 — passes AA on cream */
-  --text-ghost:          #78786E;  /* darkened from #9A9A90 — readable, not just decorative */
-  --border-default:      rgba(0,0,0,0.12);
-  --border-strong:       rgba(0,0,0,0.24);
+  --text-primary:        #100F0A;  /* near-black, max legibility */
+  --text-secondary:      #312F27;  /* darkened from #3D3D34 */
+  --text-muted:          #4F4E46;  /* darkened from #62625A — solid AA on cream */
+  --text-ghost:          #63635A;  /* darkened from #78786E — clearly readable, not just decorative */
+  --border-default:      rgba(0,0,0,0.16);  /* stronger so edges read */
+  --border-strong:       rgba(0,0,0,0.30);
 
-  /* Dark-section text — lightened for contrast on near-black */
-  --dark-text-primary:   #F2F0EA;
-  --dark-text-secondary: #B4B4A6;  /* lightened from #B4B4A6 */
-  --dark-text-muted:     #8E8E80;  /* lightened from #8E8E80 — now legible on black */
-  --dark-text-ghost:     #6E6E62;  /* lightened from #6E6E62 */
+  /* Dark-section text — lightened hard for strong contrast on near-black (#0E0E0C) */
+  --dark-text-primary:   #FBFAF6;  /* near-white headings */
+  --dark-text-secondary: #E4E2D9;  /* body copy on dark — was #D8D6CC, now strong AA+ */
+  --dark-text-muted:     #C2C1B5;  /* labels/secondary on dark — was #B0AFA2 */
+  --dark-text-ghost:     #9C9C90;  /* faint detail on dark — was #8C8C80, now legible */
 
-  --accent-green:        #1F4A35;
-  --accent-green-strong: #173A29;  /* darker green for small text on tint */
+  --accent-green:        #1B4530;
+  --accent-green-strong: #123124;  /* darker green for small text on tint — stronger contrast */
   --accent-green-light:  #2A6347;
   --accent-green-tint:   rgba(31,74,53,0.10);
   --accent-green-border: rgba(31,74,53,0.38);
@@ -57,8 +57,8 @@ body {
   background: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-serif);
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: 18px;
+  line-height: 1.72;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -81,8 +81,8 @@ img, svg, table { max-width: 100%; }
 /* ——— Eyebrows ——— */
 .rp-eyebrow {
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.15em;
+  font-size: 12px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--accent-green);
   margin-bottom: 1.5rem;
@@ -90,10 +90,10 @@ img, svg, table { max-width: 100%; }
 }
 .rp-eyebrow-dark {
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.15em;
+  font-size: 12px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent-amber);
+  color: #E0B96A;              /* brighter amber for contrast on near-black */
   margin-bottom: 1.5rem;
   display: block;
 }
@@ -110,11 +110,11 @@ img, svg, table { max-width: 100%; }
 }
 .rp-big-heading {
   font-family: var(--font-serif);
-  font-size: clamp(36px, 5vw, 60px);
+  font-size: clamp(40px, 5.4vw, 66px);
   font-weight: 600;
-  line-height: 0.96;
+  line-height: 0.98;
   letter-spacing: -0.02em;
-  color: #ECEAE4;
+  color: var(--dark-text-primary);
   margin-bottom: 1.25rem;
 }
 .rp-sub-heading {
@@ -127,26 +127,28 @@ img, svg, table { max-width: 100%; }
 }
 .rp-sub-heading-dark {
   font-family: var(--font-serif);
-  font-size: clamp(20px, 2.5vw, 30px);
+  font-size: clamp(24px, 2.9vw, 34px);
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.15;
   letter-spacing: -0.015em;
-  color: #ECEAE4;
+  color: var(--dark-text-primary);
   margin-bottom: 1.5rem;
 }
 .rp-body {
   font-family: var(--font-serif);
-  font-size: 18px;
-  line-height: 1.7;
+  font-size: 19.5px;
+  line-height: 1.72;
+  font-weight: 500;            /* heavier so the thin serif reads solidly */
   color: var(--text-secondary);
-  max-width: 38ch;
+  max-width: 40ch;
 }
 .rp-body-dark {
   font-family: var(--font-serif);
-  font-size: 18px;
-  line-height: 1.7;
+  font-size: 20px;
+  line-height: 1.75;
+  font-weight: 500;            /* heavier so serif holds up on near-black */
   color: var(--dark-text-secondary);
-  max-width: 38ch;
+  max-width: 40ch;
 }
 
 /* italics — green on light, amber on dark */
@@ -282,21 +284,23 @@ em { font-style: italic; color: var(--accent-green); }
 .rp-compare-table tr { transition: background 0.1s ease; }
 .rp-compare-table td:nth-child(1) {
   font-family: var(--font-serif);
-  font-weight: 500;
-  font-size: 15px;
-  color: #ECEAE4;
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--dark-text-primary);
   width: 22%;
   padding-right: 1rem;
 }
 .rp-compare-table td:nth-child(2) {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--dark-text-muted);
   width: 38%;
   padding-right: 1rem;
+  line-height: 1.6;
 }
 .rp-compare-table td:nth-child(3) {
-  font-size: 14px;
+  font-size: 15.5px;
+  line-height: 1.6;
   color: var(--dark-text-secondary);
   font-family: var(--font-serif);
 }
@@ -311,7 +315,7 @@ em { font-style: italic; color: var(--accent-green); }
   padding: 0.85rem 1.1rem;
   border-radius: 0 6px 6px 0;
   font-family: var(--font-mono);
-  font-size: 12.5px;
+  font-size: 13.5px;
   color: var(--accent-green-strong);
   line-height: 1.7;
   letter-spacing: 0.01em;
@@ -475,28 +479,31 @@ em { font-style: italic; color: var(--accent-green); }
 }
 
 @media (max-width: 768px) {
-  .rp-section { padding: 3rem 1.25rem; }
-  .rp-section-dark { padding: 3rem 1.25rem; }
-  .rp-hero-heading { font-size: 40px !important; line-height: 1; }
-  .rp-big-heading { font-size: 34px !important; line-height: 1; }
-  .rp-sub-heading { font-size: 26px; }
+  .rp-section { padding: 3.25rem 1.35rem; }
+  .rp-section-dark { padding: 3.25rem 1.35rem; }
+  .rp-hero-heading { font-size: 44px !important; line-height: 1.02; }
+  .rp-big-heading { font-size: 38px !important; line-height: 1.04; }
+  .rp-sub-heading { font-size: 28px; }
+  .rp-sub-heading-dark { font-size: 26px; }
   .rp-three-col { grid-template-columns: 1fr; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-  .app-pad { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .app-pad { padding-left: 1.35rem; padding-right: 1.35rem; }
 
-  /* Body text stays comfortably large on mobile */
-  .rp-body, .rp-body-dark { font-size: 17px; max-width: 100%; }
+  /* Body text stays comfortably large + readable on mobile */
+  .rp-body, .rp-body-dark { font-size: 18px; line-height: 1.72; max-width: 100%; }
 
   /* Cards get a touch more breathing room edge-to-edge */
-  .rp-card-raised { padding: 1.35rem; }
+  .rp-card-raised { padding: 1.5rem; }
 
-  /* Buttons become easier tap targets */
-  .rp-btn-cta { padding: 0.85rem 1.6rem; font-size: 13px; }
-  .rp-btn-ghost, .rp-btn-solid { padding: 0.55rem 0.9rem; font-size: 12px; }
+  /* Buttons become easier tap targets (min 44px height) */
+  .rp-btn-cta { padding: 0.95rem 1.7rem; font-size: 14px; min-height: 44px; }
+  .rp-btn-ghost, .rp-btn-solid { padding: 0.7rem 1.1rem; font-size: 13px; min-height: 44px; }
 
-  /* Tables scroll horizontally instead of overflowing */
-  .rp-compare-table td:nth-child(2) { width: auto; }
-  .rp-compare-table { font-size: 13px; }
+  /* Table: keep it readable; let the wrapping container scroll if needed */
+  .rp-compare-table td { padding: 0.85rem 0; }
+  .rp-compare-table td:nth-child(1) { font-size: 16px; }
+  .rp-compare-table td:nth-child(2) { width: auto; font-size: 12.5px; }
+  .rp-compare-table td:nth-child(3) { font-size: 14.5px; }
 
   /* Stack any flex row that was relying on width */
   .stack-mobile { flex-direction: column !important; align-items: stretch !important; }
@@ -510,10 +517,13 @@ em { font-style: italic; color: var(--accent-green); }
 }
 
 @media (max-width: 480px) {
-  .rp-section, .rp-section-dark { padding: 2.5rem 1rem; }
-  .rp-hero-heading { font-size: 34px !important; }
-  .rp-big-heading { font-size: 30px !important; }
-  .app-pad { padding-left: 1rem; padding-right: 1rem; }
+  .rp-section, .rp-section-dark { padding: 2.75rem 1.1rem; }
+  .rp-hero-heading { font-size: 38px !important; }
+  .rp-big-heading { font-size: 33px !important; }
+  .rp-sub-heading { font-size: 25px; }
+  .rp-sub-heading-dark { font-size: 23px; }
+  .rp-body, .rp-body-dark { font-size: 17.5px; }
+  .app-pad { padding-left: 1.1rem; padding-right: 1.1rem; }
   .grid-2 { grid-template-columns: 1fr; }
 }
 

@@ -1,10 +1,18 @@
 "use client";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import GroupCard from "@/components/GroupCard";
 import { currentUser, groups } from "@/data/mock";
 
 export default function Dashboard() {
   const totalSaved = groups.reduce((sum, g) => sum + g.contribution * g.currentWeek, 0);
+
+  // Render the date only after mount — server and client clocks/locales can differ,
+  // which causes a hydration mismatch if formatted during SSR.
+  const [today, setToday] = useState("");
+  useEffect(() => {
+    setToday(new Date().toLocaleDateString("en-NG", { weekday: "long", year: "numeric", month: "long", day: "numeric" }));
+  }, []);
 
   return (
     <main style={{ background: "var(--bg-primary)", minHeight: "100vh" }}>
@@ -17,8 +25,8 @@ export default function Dashboard() {
               Welcome back,<br />
               <em>Ngozi.</em>
             </h1>
-            <p style={{ fontFamily: "var(--font-mono)", fontSize: "12px", color: "var(--text-muted)", letterSpacing: "0.03em" }}>
-              {new Date().toLocaleDateString("en-NG", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}
+            <p suppressHydrationWarning style={{ fontFamily: "var(--font-mono)", fontSize: "12px", color: "var(--text-muted)", letterSpacing: "0.03em", minHeight: "1.2em" }}>
+              {today}
             </p>
           </div>
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>

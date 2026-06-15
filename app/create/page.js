@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { usePidgin, t } from "@/contexts/PidginContext";
 
@@ -16,7 +16,11 @@ export default function CreateCircle() {
   const { pidgin } = usePidgin();
   const [step, setStep] = useState(0); // 0=rules, 1=members, 2=rotation
   const [done, setDone] = useState(false);
-  const [circleCode] = useState("AWK-" + Math.floor(Math.random() * 900 + 100));
+  // Random code assigned on the client after mount — avoids server/client mismatch.
+  const [circleCode, setCircleCode] = useState("AWK-000");
+  useEffect(() => {
+    setCircleCode("AWK-" + Math.floor(Math.random() * 900 + 100));
+  }, []);
 
   // Step 0 — Rules
   const [name, setName] = useState("");
